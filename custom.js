@@ -3,7 +3,6 @@ function calculator (){
     const screen = document.querySelector('#screen');
     const keys = document.querySelectorAll('.keys');
     const dot = document.querySelector('#dot');
-    const zeros = document.querySelector('#double-zero');
     
   
     const onCalc = onBtn.addEventListener('click',function(){
@@ -18,20 +17,22 @@ function calculator (){
             else 
             {
                 if (this.classList.contains('operands')) {
-                    if (this.value == '00') {
-                        screen.value = screen.value == '0' ? parseFloat(this.value) : screen.value += parseFloat(this.value);
-                        // screen.value += parseFloat(this.value)
+                    if (this.value == '00' && screen.value !== '0') {
+                        screen.value += this.value;
                     }
                     // using ternary operator to check if first digit on screen is zero or not
-
-                    screen.value = screen.value == '0' ? parseFloat(this.value) : screen.value += parseFloat(this.value);  
+                    else if (this.value !== '00'){
+                        screen.value = screen.value == '0' ? parseFloat(this.value) : screen.value += parseFloat(this.value);
+                    }
+                      
                 }
                 else if (this.classList.contains('operators')) {
             
                         screen.value += this.value;  
                 }
                 
-                else if (this.classList.contains('equal-sign')) {
+                else if (this.classList.contains('equal-sign')) 
+                {
                     let str = screen.value;
                     let extr = /\d+([+-/x]+)\d+/;
                     let op = str.match(/[+-/x%]/g);
@@ -51,8 +52,7 @@ function calculator (){
                 // clear last entry with CE
                 else if (this.classList.contains('clear')) {
                     let entry = screen.value;
-                    let lastEntry = entry.slice(0,entry.length-1);
-                    screen.value = entry + '\n' + lastEntry;
+                    screen.value = entry.slice(0,entry.length-1);
                 }
 
                 dot.addEventListener('click',function(){
@@ -70,7 +70,6 @@ function calculator (){
     
 
     let t;
-    // window.onmousemove = timeout;
     document.onmousedown = timeout;  // works for touchscreen presses as well      
     document.ontouchstart = timeout; // works for touchscreen swipes as well 
     document.onclick = timeout;      // works for touchpad clicks as well
