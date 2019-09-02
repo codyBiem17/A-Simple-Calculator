@@ -13,24 +13,24 @@
     font-weight: 600;
     height: 40px;
 }
-div input[type='button']{
+div [type='button']{
     background-color: #eeeeee;
     box-shadow: 0 3px 0 #a1a1a1;
     font-weight: 700;
     width: 43px; 
 }
-div input[type='button'].equal-sign{
+div [type='button']#equal-sign{
     background-color: #4a9840;
     color: white;
     /* border: 1px solid red */
     max-width: 170px;
     width: 100%
 }
-div input[type='button'].clear, div input[type='button'].clear-all{
+div [type='button'].clear, div [type='button'].clear-all{
     background-color: #df3a55;
     color: white;
 }
-div input[type='button'].clear-all{
+div [type='button'].clear-all{
     font-size: 10px;
     height: 30px;
     /* vertical-align: super */
